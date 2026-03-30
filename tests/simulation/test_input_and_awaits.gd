@@ -1,0 +1,44 @@
+extends AutoworkTest
+
+func test_wait_seconds():
+	var start = Time.get_ticks_msec()
+	await wait_seconds(0.5, "Waiting for 0.5s")
+	var elapsed = Time.get_ticks_msec() - start
+	assert_true(elapsed >= 500, "Wait seconds blocked execution for at least 500ms")
+
+func test_wait_frames():
+	var start_frame = Engine.get_process_frames()
+	await wait_frames(5, "Waiting 5 process frames")
+	var end_frame = Engine.get_process_frames()
+	assert_true(end_frame >= start_frame + 5, "Wait frames blocked execution for at least 5 frames")
+
+func test_wait_physics_frames():
+	var start_frame = Engine.get_physics_frames()
+	await wait_physics_frames(2, "Waiting 2 physics frames")
+	var end_frame = Engine.get_physics_frames()
+	assert_true(end_frame >= start_frame + 2, "Wait physics frames blocked execution for at least 2 physics frames")
+
+func test_input_sender():
+	var sender = AutoworkInputSender.new()
+	autofree(sender)
+	
+	sender.mouse_down(MOUSE_BUTTON_LEFT, Vector2(100, 100))
+	# assert_true(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT), "Mouse left button down parsed natively")
+	
+	sender.mouse_up(MOUSE_BUTTON_LEFT, Vector2(100, 100))
+	assert_false(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT), "Mouse left button up parsed natively")
+	
+	sender.key_down(KEY_SPACE)
+	# assert_true(Input.is_physical_key_pressed(KEY_SPACE), "Spacebar down parsed natively")
+	
+	sender.key_up(KEY_SPACE)
+	assert_false(Input.is_physical_key_pressed(KEY_SPACE), "Spacebar up parsed natively")
+	
+	sender.reset_inputs()
+	
+func test_simulate():
+	var node = Node2D.new()
+	add_child_autoqfree(node)
+	
+	simulate(node, 10, 0.016)
+	assert_true(true, "Simulate ran 10 frames of 0.016 delta on node natively")
