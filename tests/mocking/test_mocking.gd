@@ -31,7 +31,7 @@ func test_spying_calls():
 	assert_not_called(obj, "get_name")
 
 func test_doubler_api():
-	var d = double("res://tests/classes/test_inner_classes.gd")
+	var d = create_double("res://tests/classes/test_inner_classes.gd")
 	assert_not_null(d, "Doubled script instance returned natively")
 	
 	var pd = partial_double("res://tests/classes/test_inner_classes.gd")

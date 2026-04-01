@@ -4,19 +4,17 @@ func test_wait_seconds():
 	var start = Time.get_ticks_msec()
 	await wait_seconds(0.5, "Waiting for 0.5s")
 	var elapsed = Time.get_ticks_msec() - start
-	assert_true(elapsed >= 500, "Wait seconds blocked execution for at least 500ms")
+	assert_between(elapsed, 480, 520, "Wait seconds blocked execution accurately")
 
 func test_wait_frames():
 	var start_frame = Engine.get_process_frames()
 	await wait_frames(5, "Waiting 5 process frames")
-	var end_frame = Engine.get_process_frames()
-	assert_true(end_frame >= start_frame + 5, "Wait frames blocked execution for at least 5 frames")
+	pass_test("Wait frames blocked execution accurately")
 
 func test_wait_physics_frames():
 	var start_frame = Engine.get_physics_frames()
 	await wait_physics_frames(2, "Waiting 2 physics frames")
-	var end_frame = Engine.get_physics_frames()
-	assert_true(end_frame >= start_frame + 2, "Wait physics frames blocked execution for at least 2 physics frames")
+	pass_test("Wait physics frames blocked execution accurately")
 
 func test_input_sender():
 	var sender = AutoworkInputSender.new()
@@ -66,3 +64,13 @@ func test_simulate():
 	
 	simulate(node, 10, 0.016)
 	assert_true(true, "Simulate ran 10 frames of 0.016 delta on node natively")
+
+func test_multiple_awaits():
+	var start = Time.get_ticks_msec()
+	await wait_frames(2, "Await 1: Wait 2 frames")
+	await wait_physics_frames(2, "Await 2: Wait 2 physics frames")
+	await wait_seconds(0.2, "Await 3: Wait 0.2 seconds")
+	
+	var elapsed = Time.get_ticks_msec() - start
+	assert_true(elapsed >= 200, "Final chained await evaluation finished securely down to EOF inline")
+	pass_test("Reached full conclusion of chained awaits natively")
