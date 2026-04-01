@@ -175,7 +175,7 @@ func test_phase_19_final_methods():
 	assert_true(get_assert_count() > 0, "Assert count getter binds")
 	assert_true(get_pass_count() > 0, "Pass count getter binds")
 	assert_eq(get_fail_count(), 0, "There should be 0 failure tests from older intentional fail tests")
-	assert_eq(get_pending_count(), 2, "There should be 0 pending test from older hooks")
+	assert_eq(get_pending_count(), 0, "There should be 0 pending test from older hooks")
 
 func test_phase_21_gut_alias():
 	var gut = get_gut()
