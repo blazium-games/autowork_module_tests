@@ -36,6 +36,30 @@ func test_input_sender():
 	
 	sender.reset_inputs()
 	
+func test_targeted_input_sender():
+	var sender = AutoworkInputSender.new()
+	autofree(sender)
+	
+	var control = Control.new()
+	add_child_autoqfree(control)
+	
+	var script = GDScript.new()
+	script.source_code = """
+extends Control
+var received_click = false
+func _gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		received_click = true
+"""
+	script.reload()
+	control.set_script(script)
+	
+	sender.mouse_down(MOUSE_BUTTON_LEFT, Vector2(100, 100), control)
+	
+	assert_true(control.get("received_click"), "Targeted control received the left click via _gui_input directly")
+	
+	sender.mouse_up(MOUSE_BUTTON_LEFT, Vector2(100, 100), control)
+	
 func test_simulate():
 	var node = Node2D.new()
 	add_child_autoqfree(node)

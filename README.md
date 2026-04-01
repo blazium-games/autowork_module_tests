@@ -2,7 +2,7 @@
 
 This repository contains the test suite and examples for the **Autowork** testing framework, a native C++ testing framework integrated directly into the Blazium engine.
 
-Unlike traditional GDScript testing frameworks, Autowork binds its assertions and mocking systems directly in C++ via Godot's `ClassDB`, ensuring high performance, deep engine integration, and native reflection capabilities.
+Unlike traditional GDScript testing frameworks, Autowork binds its assertions and mocking systems directly in C++ via Blazium's `ClassDB`, ensuring high performance, deep engine integration, and native reflection capabilities.
 
 ## Features
 
@@ -29,7 +29,7 @@ Autowork is configured using an `.autoworkconfig.json` file in the root of your 
 
 ## Running Tests
 
-To run the test suite, execution is triggered via a standard Godot script attached to your SceneTree (e.g., `run_tests.gd`).
+To run the test suite, execution is triggered via a standard GDScript attached to your SceneTree (e.g., `run_tests.gd`).
 
 ```gdscript
 extends SceneTree
