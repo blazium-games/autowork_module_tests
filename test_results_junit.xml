@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="GutTests" failures="3" tests="59">
+  <testsuite name="summary" tests="59" failures="3" skipped="4" time="0.0">
+    <testcase name="failing_tests" assertions="3" status="fail" classname="summary" time="0.0">
+      <failure message="failed"><![CDATA[There were failing tests in the suite.]]></failure>
+    </testcase>
+    <testcase name="passing_tests" assertions="52" status="pass" classname="summary" time="0.0">
+    </testcase>
+  </testsuite>
+</testsuites>

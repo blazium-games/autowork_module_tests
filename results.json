@@ -1,0 +1,104 @@
+{
+  "fail_count": 3,
+  "orphan_count": 40,
+  "pass_count": 44,
+  "scripts": [
+    {
+      "name": "res://test_basic.gd",
+      "tests": [
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_expanded_asserts_pass",
+          "orphans": 0,
+          "passes": 4
+        },
+        {
+          "errors": [
+            "This should fail because 1 != 2 (Expected: 2, Got: 1)"
+          ],
+          "fails": 1,
+          "name": "test_expanded_asserts_fail",
+          "orphans": 0,
+          "passes": 0
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_signals",
+          "orphans": 15,
+          "passes": 2
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_orphans",
+          "orphans": 1,
+          "passes": 1
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_parameters",
+          "orphans": 0,
+          "passes": 1
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_parameters (param 1)",
+          "orphans": 0,
+          "passes": 1
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_parameters (param 2)",
+          "orphans": 0,
+          "passes": 1
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_phase12_asserts",
+          "orphans": 0,
+          "passes": 13
+        },
+        {
+          "errors": [
+            "Patching options array succeeds (Expected: patched_, Got: test_)"
+          ],
+          "fails": 1,
+          "name": "test_autowork_config",
+          "orphans": 0,
+          "passes": 2
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_phase_14_assertions",
+          "orphans": 19,
+          "passes": 13
+        },
+        {
+          "errors": [],
+          "fails": 0,
+          "name": "test_phase15_mocking",
+          "orphans": 5,
+          "passes": 6
+        },
+        {
+          "errors": [
+            "Dictionary Diff Logging\n  Diff at key b: expected 3, got 2\n  Diff at key c: expected { \"x\": 11 }, got { \"x\": 10 }\n  Missing key: d"
+          ],
+          "fails": 1,
+          "name": "test_phase_16_deep_diffs_and_versions",
+          "orphans": 0,
+          "passes": 0
+        }
+      ]
+    }
+  ],
+  "test_count": 10,
+  "warning_count": 1
+}
