@@ -9,7 +9,7 @@ class TestInnerGroupOne extends AutoworkTest:
 
 class TestInnerGroupTwo extends AutoworkTest:
 	func before_all():
-		gut.p("TestInnerGroupTwo before_all()")
+		pass
 
 	func test_math():
 		assert_eq(2 + 2, 4, "Inner group two math works")

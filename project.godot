@@ -11,4 +11,9 @@ config_version=5
 [application]
 
 config/name="autowork_module_tests"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.3.2", "GL Compatibility")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

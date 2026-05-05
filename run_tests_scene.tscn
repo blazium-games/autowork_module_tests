@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cotggvcckfqth"]
+
+[sub_resource type="GDScript" id="GDScript_6adnx"]
+script/source = "extends Autowork
+
+
+func _ready():
+	run_tests()
+"
+
+[node name="Autowork" type="Autowork"]
+script = SubResource("GDScript_6adnx")

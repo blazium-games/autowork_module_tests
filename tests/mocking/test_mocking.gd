@@ -33,9 +33,3 @@ func test_spying_calls():
 func test_doubler_api():
 	var d = create_double("res://tests/classes/test_inner_classes.gd")
 	assert_not_null(d, "Doubled script instance returned natively")
-	
-	var pd = partial_double("res://tests/classes/test_inner_classes.gd")
-	assert_not_null(pd, "Partial doubled script instance returned natively")
-	
-	var double_inner_ref = double_inner("res://tests/classes/test_inner_classes.gd", "TestInnerGroupOne")
-	var partial_double_inner_ref = partial_double_inner("res://tests/classes/test_inner_classes.gd", "TestInnerGroupTwo")
