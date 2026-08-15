@@ -1,5 +1,7 @@
 extends AutoworkTest
 
+const TestData = preload("res://data/test_data.gd")
+
 
 func test_basic_asserts():
 	assert_true(true, "true is true")

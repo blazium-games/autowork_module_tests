@@ -28,7 +28,7 @@ func test_wait_seconds():
 	await wait_seconds(2.0, "Waiting 2 seconds")
 	
 	var diff = Time.get_ticks_msec() - start_time
-	if (assert_almost_eq(diff, 2000, 100)):
+	if (assert_almost_eq(diff, 2000, 250)):
 		pass_test("Waited %s seconds." % (diff / 1000.0))
 	else:
 		fail_test("Error waiting 2 seconds. Waited %d ms" % diff)

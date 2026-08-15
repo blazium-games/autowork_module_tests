@@ -1,5 +1,10 @@
 extends AutoworkTest
 
+# Negative fixture (not collected: filename does not start with test_).
+# These asserts are expected to fail when run manually.
+
+const TestData = preload("res://data/test_data.gd")
+
 
 func _before_all() -> void:
 	print_log("[WARN]: The following tests are expected to fail.")
@@ -34,7 +39,7 @@ func test_comparing_asserts():
 
 	assert_between(10, 0, 2, "10 is not within range [0, 2]")
 	assert_not_between(1, 0, 2, "1 is within range [0, 2]")
-	
+
 
 func test_null_checks_asserts():
 	assert_null(self, "This script is not null")
@@ -52,34 +57,34 @@ func test_has_asserts():
 
 	assert_has(TestData.BLAZIUM.name, "first", "'BLAZIUM.name' does not have the key 'first'")
 	assert_does_not_have(TestData.BLAZIUM, "colors", "'BLAZIUM' has the key 'colors'")
-	
+
 	var string = "Hello, World!"
 	assert_has(string, "Goodbye", "'string' does not contain \"Goodbye\"")
 	assert_does_not_have(string, "World", "'string' contains \"World\"")
 
 
 func test_file_asserts():
-	assert_dir_exists("res://void", "The 'void' directory does not exist");
-	assert_dir_does_not_exist("res://", "The resources directory exists");
+	assert_dir_exists("res://void", "The 'void' directory does not exist")
+	assert_dir_does_not_exist("res://", "The resources directory exists")
 
-	assert_file_exists("res://SECRETS.env", "'SECRETS.env' does not exist");
-	assert_file_does_not_exist("res://README.md", "'README.md' exists");
+	assert_file_exists("res://SECRETS.env", "'SECRETS.env' does not exist")
+	assert_file_does_not_exist("res://README.md", "'README.md' exists")
 
-	assert_file_empty("res://README.md", "'README.md' is not empty");
-	assert_file_not_empty("res://data/empty.txt", "'empty.txt' is empty");
+	assert_file_empty("res://README.md", "'README.md' is not empty")
+	assert_file_not_empty("res://data/empty.txt", "'empty.txt' is empty")
 
 
 func test_typeof_asserts():
-	assert_typeof(self, TYPE_INT, "This class is an Object");
-	assert_not_typeof(42, TYPE_INT, "42 is an int");
+	assert_typeof(self, TYPE_INT, "This class is an Object")
+	assert_not_typeof(42, TYPE_INT, "42 is an int")
 
 
 func test_is_assert():
-	assert_is(self, "Node2D", "This class extends AutoworkTest");
+	assert_is(self, "Node2D", "This class extends AutoworkTest")
 
 
 func test_string_asserts():
 	var string = "Hello, World!"
 	assert_string_contains(string, "Goodbye", "'string' does not contain \"Goodbye\"")
-	assert_string_starts_with(string, "Heaven", "'string' does not start with \"Heaven\"");
-	assert_string_ends_with(string, "?", "'string' does not end with \"?\"");
+	assert_string_starts_with(string, "Heaven", "'string' does not start with \"Heaven\"")
+	assert_string_ends_with(string, "?", "'string' does not end with \"?\"")
